@@ -1,0 +1,16 @@
+Small Utilities for Sun Cluster 3.1.
+
+The utils allow to run another command in presence of given Resource Group (RG) on the local node. They can help you organise multi-node shared cron jobs, set profile/environment settings in shared home directories (GFS) and perform some logic in shell scripts, depending on whether the given RG is running on local machine or not.
+
+scwrap executes the specified command with arguments, for example: 
+scwrap myapp-rg command arg1 arg2 
+
+scck returns 0 or 1 depending on presence of the specified RG, for example: 
+scck myapp-rg && command arg1 arg2
+or as parameter of "if" command:
+    if scck <rg_name>
+    then
+        command
+    else
+        another command
+    fi
